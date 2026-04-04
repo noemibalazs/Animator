@@ -42,7 +42,7 @@ kotlin {
     }
 
     cocoapods {
-        summary = "Japanime"
+        summary = "Animator"
         homepage = "."
         version = "1.0.0"
         ios.deploymentTarget = "16.0"
