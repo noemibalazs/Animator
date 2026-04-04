@@ -1,0 +1,142 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+plugins {
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlinCocoapods)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+}
+
+kotlin {
+    androidTarget {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
+    }
+
+
+    targets.configureEach {
+        compilations.configureEach {
+            compileTaskProvider.get().compilerOptions {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+                freeCompilerArgs.add("-opt-in=kotlinx.cinterop.ExperimentalForeignApi")
+            }
+        }
+    }
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+            linkerOpts.add("-lsqlite3")
+        }
+    }
+
+    cocoapods {
+        summary = "Japanime"
+        homepage = "."
+        version = "1.0.0"
+        ios.deploymentTarget = "16.0"
+
+        framework {
+            baseName = "ComposeApp"
+        }
+    }
+
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.lifecycle.process)
+
+            implementation(libs.microsoft.onnx)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+        }
+
+        commonMain.dependencies {
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.compose.components.resources)
+
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.lifecycle.runtime.compose)
+
+            implementation(libs.navigation.compose)
+            implementation(libs.kotlin.coroutine)
+            implementation(libs.coil.compose)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
+        }
+    }
+}
+
+android {
+    namespace = "com.noemi_balazs.animator"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+
+    defaultConfig {
+        applicationId = "com.noemi_balazs.animator"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        versionCode = 1
+        versionName = "1.0"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    dependencies {
+        debugImplementation(libs.androidx.compose.ui.tooling)
+
+        add("kspAndroid", libs.room.compiler)
+        add("kspIosX64", libs.room.compiler)
+        add("kspIosArm64", libs.room.compiler)
+        add("kspIosSimulatorArm64", libs.room.compiler)
+    }
+}
+
+compose.resources {
+    publicResClass = false
+    generateResClass = auto
+    packageOfResClass = "com.noemi_balazs.japanime.resources"
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
