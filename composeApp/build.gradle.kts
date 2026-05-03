@@ -133,7 +133,7 @@ android {
 compose.resources {
     publicResClass = false
     generateResClass = auto
-    packageOfResClass = "com.noemi_balazs.japanime.resources"
+    packageOfResClass = "com.noemi_balazs.animator.resources"
 }
 
 room {
