@@ -7,7 +7,7 @@
   },
   "authors": "",
   "license": "",
-  "summary": "Japanime",
+  "summary": "Animator",
   "vendored_frameworks": "build/cocoapods/framework/ComposeApp.framework",
   "libraries": "c++",
   "platforms": {

@@ -30,7 +30,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -39,6 +38,33 @@ kotlin {
             isStatic = true
             linkerOpts.add("-lsqlite3")
         }
+
+        val onnxXcframework = rootProject.file("frameworks/onnxruntime.xcframework")
+
+        val onnxCinteropHeaders =
+            rootProject.file("frameworks/onnxruntime.xcframework/ios-arm64/onnxruntime.framework/Headers")
+
+        val onnxFrameworkSearchDir = when (iosTarget.name) {
+            "iosArm64" -> onnxXcframework.resolve("ios-arm64")
+            "iosSimulatorArm64" -> onnxXcframework.resolve("ios-arm64_x86_64-simulator")
+            else -> error("Unexpected iOS Kotlin target name: ${iosTarget.name}")
+        }
+
+        iosTarget.binaries.all {
+            linkerOpts(
+                "-F${onnxFrameworkSearchDir.absolutePath}",
+                "-framework", "onnxruntime",
+            )
+        }
+
+        iosTarget.compilations["main"].cinterops {
+            val onnxruntime by creating {
+                defFile(project.file("src/nativeInterop/cinterop/onnx.def"))
+
+                packageName("onnxruntime")
+                includeDirs(onnxCinteropHeaders)
+            }
+        }
     }
 
     cocoapods {
@@ -46,6 +72,8 @@ kotlin {
         homepage = "."
         version = "1.0.0"
         ios.deploymentTarget = "16.0"
+
+        podfile = project.file("../iosApp/Podfile")
 
         framework {
             baseName = "ComposeApp"
@@ -124,7 +152,6 @@ android {
         debugImplementation(libs.androidx.compose.ui.tooling)
 
         add("kspAndroid", libs.room.compiler)
-        add("kspIosX64", libs.room.compiler)
         add("kspIosArm64", libs.room.compiler)
         add("kspIosSimulatorArm64", libs.room.compiler)
     }
