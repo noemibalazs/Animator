@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -18,7 +17,6 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_21)
         }
     }
-
 
     targets.configureEach {
         compilations.configureEach {
@@ -89,6 +87,12 @@ kotlin {
 
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            implementation(libs.camerax.core)
+            implementation(libs.camerax.camera2)
+            implementation(libs.camerax.view)
+            implementation(libs.camerax.lifecycle)
+            implementation(libs.camerax.extension)
         }
 
         commonMain.dependencies {
@@ -98,12 +102,14 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.compose.components.resources)
+            implementation(libs.compose.backhandler)
 
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.lifecycle.runtime.compose)
 
             implementation(libs.navigation.compose)
             implementation(libs.kotlin.coroutine)
+            implementation(libs.kotlin.date.time)
             implementation(libs.coil.compose)
 
             implementation(libs.koin.core)
@@ -112,18 +118,23 @@ kotlin {
 
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
+
+            implementation(libs.androidx.datastore)
+            implementation(libs.androidx.datastore.preferences)
+
+            implementation(libs.okio.hashing)
         }
     }
 }
 
 android {
     namespace = "com.noemi_balazs.animator"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.noemi_balazs.animator"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 28
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }

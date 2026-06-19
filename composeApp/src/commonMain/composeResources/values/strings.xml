@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Animator</string>
+
+    <string name="label_continue">Continue</string>
+    <string name="label_cancel">Cancel</string>
+
+    <string name="label_camera_permission">Camera permission</string>
+    <string name="label_camera_permission_message">Camera access is required to take photos.</string>
+    <string name="label_camera_permission_required">Permission required</string>
+    <string name="label_camera_settings">Camera permission was permanently denied. Enable it in Settings.</string>
+</resources>
