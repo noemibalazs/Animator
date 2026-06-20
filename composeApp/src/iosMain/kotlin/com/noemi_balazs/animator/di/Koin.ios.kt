@@ -51,7 +51,7 @@ actual val platformModule: Module = module {
     single<ToastManager> { IosToastManager() }
 
     single<Camera> { IosCamera() }
-    single<Gallery> { IosGallery() }
+    single<Gallery> { IosGallery(get()) }
     single<Cartoonizer> { IosCartoonizer() }
 
     single<DataStore<Preferences>> { createDataStore() }

@@ -1,6 +1,7 @@
 package com.noemi_balazs.animator.di
 
 import com.noemi_balazs.animator.MainViewModel
+import com.noemi_balazs.animator.common.ImagePicker
 import com.noemi_balazs.animator.data.database.AnimatorDataBase
 import com.noemi_balazs.animator.data.datastore.AppDataStore
 import com.noemi_balazs.animator.data.repository.AnimatorRepository
@@ -15,6 +16,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 expect class AnimatorImage
+
 expect fun AnimatorImage.getBytes(): ByteArray?
 expect val platformModule: Module
 val domainModule = module {
@@ -32,15 +34,23 @@ val viewModelModule = module {
     factoryOf(::FavoriteViewModel)
     factoryOf(::DetailsViewModel)
 }
+
 fun getAppModules(): List<Module> = listOf(
     domainModule,
     platformModule,
     viewModelModule
 )
 
-fun initKoin() {
+fun initKoin(
+    picker: ImagePicker
+) {
+    val imagePickerModule = module {
+        single<ImagePicker> { picker }
+    }
 
     startKoin {
-        modules(getAppModules())
+        modules(
+            getAppModules() + imagePickerModule
+        )
     }
 }
