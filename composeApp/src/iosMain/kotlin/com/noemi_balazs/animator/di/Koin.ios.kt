@@ -25,9 +25,12 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import platform.UIKit.UIImage
 import platform.UIKit.UIImagePNGRepresentation
+import platform.UIKit.UIView
 import platform.posix.memcpy
 
 actual typealias AnimatorImage = UIImage
+
+actual typealias AnimatorView = UIView
 
 actual fun AnimatorImage.getBytes(): ByteArray? {
     val data = UIImagePNGRepresentation(this) ?: return null
@@ -50,7 +53,7 @@ actual val platformModule: Module = module {
     single<ShareProvider> { IosShareProvider() }
     single<ToastManager> { IosToastManager() }
 
-    single<Camera> { IosCamera() }
+    single<Camera> { IosCamera(get()) }
     single<Gallery> { IosGallery(get()) }
     single<Cartoonizer> { IosCartoonizer() }
 

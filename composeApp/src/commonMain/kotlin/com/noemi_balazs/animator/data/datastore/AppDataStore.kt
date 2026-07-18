@@ -2,6 +2,7 @@ package com.noemi_balazs.animator.data.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +22,19 @@ class AppDataStore(private val dataStore: DataStore<Preferences>) {
         .map { preferences -> preferences[KEY_SHARED_IMAGE] }
         .flowOn(Dispatchers.IO)
 
+    suspend fun saveCameraPermissionWasRequested() {
+        dataStore.edit { preferences -> preferences[IOS_CAMERA_PERMISSION] = true }
+    }
+
+    fun getCameraPermissionWasRequested(): Flow<Boolean?> {
+        return dataStore.data.map { preferences ->
+            preferences[IOS_CAMERA_PERMISSION]
+        }.flowOn(Dispatchers.IO)
+    }
+
     companion object {
 
         private val KEY_SHARED_IMAGE = stringPreferencesKey("key_shared_image")
+        private val IOS_CAMERA_PERMISSION = booleanPreferencesKey("ios_camera_permission")
     }
 }

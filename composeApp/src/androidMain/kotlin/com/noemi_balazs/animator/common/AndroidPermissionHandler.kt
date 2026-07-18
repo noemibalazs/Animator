@@ -10,6 +10,7 @@ import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,6 +19,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.noemi_balazs.animator.resources.Res
 import com.noemi_balazs.animator.resources.label_camera_permission
 import com.noemi_balazs.animator.resources.label_camera_permission_message
@@ -32,6 +36,7 @@ class AndroidPermissionHandler : PermissionHandler {
 
         val context = LocalContext.current
         val activity = LocalActivity.current
+        val lifecycleOwner = LocalLifecycleOwner.current
 
         var isPermissionGranted by remember {
             mutableStateOf(
@@ -92,6 +97,20 @@ class AndroidPermissionHandler : PermissionHandler {
                         openSettings(context)
                     }
                 )
+            }
+        }
+
+        DisposableEffect(lifecycleOwner) {
+            val observer = LifecycleEventObserver { _, event ->
+                if (event == Lifecycle.Event.ON_RESUME) {
+                    isPermissionGranted = ContextCompat.checkSelfPermission(
+                        context, CAMERA
+                    ) == PackageManager.PERMISSION_GRANTED
+                }
+            }
+            lifecycleOwner.lifecycle.addObserver(observer)
+            onDispose {
+                lifecycleOwner.lifecycle.removeObserver(observer)
             }
         }
     }

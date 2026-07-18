@@ -3,11 +3,17 @@ import ComposeApp
 
 @main
 struct iOSApp: App {
-    
-    let bridge = IosImagePickerBridge.init()
-    
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+    let imageBridge = IosImagePickerBridge.init()
+    let cameraBridge = IosCameraActionBridge.init()
+
     init() {
-        KoinKt.doInitKoin(picker: bridge)
+        KoinKt.doInitKoin(
+            picker: imageBridge,
+            actionHandler: cameraBridge
+        )
     }
 
     var body: some Scene {

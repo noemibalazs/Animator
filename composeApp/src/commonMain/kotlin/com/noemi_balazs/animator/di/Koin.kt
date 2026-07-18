@@ -1,6 +1,7 @@
 package com.noemi_balazs.animator.di
 
 import com.noemi_balazs.animator.MainViewModel
+import com.noemi_balazs.animator.common.CameraActionHandler
 import com.noemi_balazs.animator.common.ImagePicker
 import com.noemi_balazs.animator.data.database.AnimatorDataBase
 import com.noemi_balazs.animator.data.datastore.AppDataStore
@@ -10,12 +11,15 @@ import com.noemi_balazs.animator.feature.animator.AnimatorViewModel
 import com.noemi_balazs.animator.feature.details.DetailsViewModel
 import com.noemi_balazs.animator.feature.favorite.FavoriteViewModel
 import com.noemi_balazs.animator.feature.selector.SelectorViewModel
+import com.noemi_balazs.animator.model.CameraPermissionDialogState
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 expect class AnimatorImage
+
+expect class AnimatorView
 
 expect fun AnimatorImage.getBytes(): ByteArray?
 expect val platformModule: Module
@@ -26,6 +30,8 @@ val domainModule = module {
         val database: AnimatorDataBase = get()
         AnimatorRepositoryImpl(database.getAnimatorDao())
     }
+
+    single { CameraPermissionDialogState() }
 }
 val viewModelModule = module {
     factoryOf(::MainViewModel)
@@ -42,15 +48,20 @@ fun getAppModules(): List<Module> = listOf(
 )
 
 fun initKoin(
-    picker: ImagePicker
+    picker: ImagePicker,
+    actionHandler: CameraActionHandler
 ) {
     val imagePickerModule = module {
         single<ImagePicker> { picker }
     }
 
+    val cameraActionHandler = module {
+        single<CameraActionHandler> { actionHandler }
+    }
+
     startKoin {
         modules(
-            getAppModules() + imagePickerModule
+            getAppModules() + imagePickerModule + cameraActionHandler
         )
     }
 }

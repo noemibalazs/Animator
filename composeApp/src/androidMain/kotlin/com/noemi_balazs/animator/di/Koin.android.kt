@@ -1,6 +1,7 @@
 package com.noemi_balazs.animator.di
 
 import android.graphics.Bitmap
+import android.view.View
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.noemi_balazs.animator.common.AndroidCartoonizer
@@ -26,6 +27,8 @@ import org.koin.dsl.module
 import java.io.ByteArrayOutputStream
 
 actual typealias AnimatorImage = Bitmap
+
+actual typealias AnimatorView = View
 
 actual fun AnimatorImage.getBytes(): ByteArray? {
     val stream = ByteArrayOutputStream()
