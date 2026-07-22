@@ -9,18 +9,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.IntentCompat
-import androidx.lifecycle.lifecycleScope
-import com.noemi_balazs.animator.data.datastore.AppDataStore
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.getKoin
+import com.noemi_balazs.animator.common.SharedMediaManager
+import com.noemi_balazs.animator.utils.ext.toByteArray
 
 class MainActivity : ComponentActivity() {
-
-    private val dataStore: AppDataStore by lazy { getKoin().get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        handleSharedIntent(intent)
 
         setContent {
             App()
@@ -30,21 +28,22 @@ class MainActivity : ComponentActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-
-        val type = intent.type ?: return
-
-        if (intent.action == Intent.ACTION_SEND && type.startsWith("image")) {
-            val uri = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Uri::class.java)
-            saveImage(uri)
-        }
+        handleSharedIntent(intent)
     }
 
-    private fun saveImage(uri: Uri?) {
-        uri?.let { uri ->
-            lifecycleScope.launch {
-                dataStore.saveImage(uri.toString())
-            }
-        }
+    private fun handleSharedIntent(intent: Intent) {
+        if (intent.action != Intent.ACTION_SEND) return
+        val type = intent.type ?: return
+        if (!type.startsWith("image")) return
+
+        val uri =
+            IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Uri::class.java) ?: return
+        saveImage(uri)
+    }
+
+    private fun saveImage(uri: Uri) {
+        val bytes = uri.toByteArray(this)
+        bytes?.let { SharedMediaManager.handleSharedUrl(it) }
     }
 }
 

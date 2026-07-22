@@ -7,17 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42999810300B92CC006AACC1 /* AnimatorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 42999806300B92CB006AACC1 /* AnimatorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9940B094DD8487618ED9B59C /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F94C5A5F88A728F76469D9 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4299980E300B92CC006AACC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1A0B2D0CF4A8375CCC99285 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42999805300B92CB006AACC1;
+			remoteInfo = AnimatorExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		42999811300B92CC006AACC1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				42999810300B92CC006AACC1 /* AnimatorExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1791EBE45EF8891867DC49EB /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		42999806300B92CB006AACC1 /* AnimatorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AnimatorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		99ACFD74571D8FA2299800D1 /* AnimatorGan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatorGan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F94C5A5F88A728F76469D9 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7278D3F56E5CDFF0A8037C2 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		42999815300B92CC006AACC1 /* Exceptions for "AnimatorExtension" folder in "AnimatorExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 42999805300B92CB006AACC1 /* AnimatorExtension */;
+		};
 		F521F0824BAFE9DF267ABA1D /* Exceptions for "iosApp" folder in "iosApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -28,6 +61,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		42999807300B92CB006AACC1 /* AnimatorExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				42999815300B92CC006AACC1 /* Exceptions for "AnimatorExtension" folder in "AnimatorExtension" target */,
+			);
+			path = AnimatorExtension;
+			sourceTree = "<group>";
+		};
 		8C92CF1A7A7AB018EB7747BC /* iosApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -38,6 +79,8 @@
 		};
 		BB82D7CB80AAE4F74FB1AC0A /* Configuration */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -49,6 +92,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9940B094DD8487618ED9B59C /* Pods_iosApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42999803300B92CB006AACC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +118,7 @@
 			children = (
 				BB82D7CB80AAE4F74FB1AC0A /* Configuration */,
 				8C92CF1A7A7AB018EB7747BC /* iosApp */,
+				42999807300B92CB006AACC1 /* AnimatorExtension */,
 				F59E3F8C3FDC7EF9FD8C2092 /* Products */,
 				27242D7AA4D66B734B8D420E /* Pods */,
 				035208A2990B595212FA2120 /* Frameworks */,
@@ -87,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				99ACFD74571D8FA2299800D1 /* AnimatorGan.app */,
+				42999806300B92CB006AACC1 /* AnimatorExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +146,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		42999805300B92CB006AACC1 /* AnimatorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42999814300B92CC006AACC1 /* Build configuration list for PBXNativeTarget "AnimatorExtension" */;
+			buildPhases = (
+				42999802300B92CB006AACC1 /* Sources */,
+				42999803300B92CB006AACC1 /* Frameworks */,
+				42999804300B92CB006AACC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				42999807300B92CB006AACC1 /* AnimatorExtension */,
+			);
+			name = AnimatorExtension;
+			productName = AnimatorExtension;
+			productReference = 42999806300B92CB006AACC1 /* AnimatorExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		47A2D7692098A7D93BFEA33A /* iosApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 296B065CD892452E196CC980 /* Build configuration list for PBXNativeTarget "iosApp" */;
@@ -105,10 +177,12 @@
 				6AA4F121D9B4250E8ED5C70E /* Resources */,
 				A5D58D5065BBAA7711F4C3F0 /* [CP] Embed Pods Frameworks */,
 				4ECFE14E7032BDE64B067FE6 /* [CP] Copy Pods Resources */,
+				42999811300B92CC006AACC1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4299980F300B92CC006AACC1 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8C92CF1A7A7AB018EB7747BC /* iosApp */,
@@ -125,9 +199,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					42999805300B92CB006AACC1 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
 					47A2D7692098A7D93BFEA33A = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -148,11 +225,19 @@
 			projectRoot = "";
 			targets = (
 				47A2D7692098A7D93BFEA33A /* iosApp */,
+				42999805300B92CB006AACC1 /* AnimatorExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		42999804300B92CB006AACC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6AA4F121D9B4250E8ED5C70E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,13 +256,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -211,13 +292,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -249,6 +326,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		42999802300B92CB006AACC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50EA7A22714DE813D06E4A24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +342,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4299980F300B92CC006AACC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42999805300B92CB006AACC1 /* AnimatorExtension */;
+			targetProxy = 4299980E300B92CC006AACC1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		1CFAB1FA0D392C2B5CCBAA94 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -266,6 +358,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
@@ -273,6 +366,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to let you take pictures.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs access to save images to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -356,6 +451,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
@@ -364,6 +460,8 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to let you take pictures.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs access to save images to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -377,6 +475,70 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.noemi-balazs.animator.AnimatorGan";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		42999812300B92CC006AACC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AnimatorExtension/AnimatorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A666X3WVF5;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnimatorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AnimatorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.noemi-balazs.animator.AnimatorGan.AnimatorExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42999813300B92CC006AACC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AnimatorExtension/AnimatorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A666X3WVF5;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnimatorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AnimatorExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.noemi-balazs.animator.AnimatorGan.AnimatorExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,6 +626,15 @@
 			buildConfigurations = (
 				F1A03810FD1026C00CCF0BFC /* Debug */,
 				2D0A9A6472C9C0174A9B862E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42999814300B92CC006AACC1 /* Build configuration list for PBXNativeTarget "AnimatorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42999812300B92CC006AACC1 /* Debug */,
+				42999813300B92CC006AACC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

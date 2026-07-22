@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,6 +38,9 @@ import com.noemi_balazs.animator.resources.camera
 import com.noemi_balazs.animator.resources.delete
 import com.noemi_balazs.animator.resources.save
 import com.noemi_balazs.animator.ui.component.AnimatorImageButton
+import com.noemi_balazs.animator.utils.ext.toByteArray
+import kotlinx.coroutines.launch
+import org.koin.compose.koinInject
 
 class AndroidCamera : Camera {
 
@@ -47,6 +51,8 @@ class AndroidCamera : Camera {
     ) {
         val context = LocalContext.current
         val owner = LocalLifecycleOwner.current
+        val scope = rememberCoroutineScope()
+        val fileStorage = koinInject<PlatformFileStorage>()
 
         val cameraController = remember {
             LifecycleCameraController(context).apply {
@@ -91,7 +97,15 @@ class AndroidCamera : Camera {
                                     contentResolver = context.contentResolver,
                                 ) { uri ->
                                     cameraResult = null
-                                    uri?.let { onSuccess(it.toString()) } ?: onError()
+                                    uri?.let {
+                                        val bytes = uri.toByteArray(context)
+                                        bytes?.let {
+                                           scope.launch {
+                                               val path = fileStorage.writeTempImage(bytes)
+                                               onSuccess(path)
+                                           }
+                                        }
+                                    } ?: onError()
                                 }
                             },
                             onDelete = {

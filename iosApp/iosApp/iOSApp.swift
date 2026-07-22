@@ -5,6 +5,7 @@ import ComposeApp
 struct iOSApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @State private var sharedURL: URL? = nil
 
     let imageBridge = IosImagePickerBridge.init()
     let cameraBridge = IosCameraActionBridge.init()
@@ -19,6 +20,18 @@ struct iOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    print("Animator - received URL: \(url)")
+
+                    if url.scheme == "animatorshare" {
+                        self.sharedURL = url
+                        delegate.application(
+                            UIApplication.shared,
+                            open: url,
+                            options: [:]
+                        )
+                    }
+                }
         }
     }
 }

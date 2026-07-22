@@ -12,6 +12,10 @@ import com.noemi_balazs.animator.feature.details.DetailsViewModel
 import com.noemi_balazs.animator.feature.favorite.FavoriteViewModel
 import com.noemi_balazs.animator.feature.selector.SelectorViewModel
 import com.noemi_balazs.animator.model.CameraPermissionDialogState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.SupervisorJob
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
@@ -32,6 +36,7 @@ val domainModule = module {
     }
 
     single { CameraPermissionDialogState() }
+    single<CoroutineScope> { CoroutineScope(SupervisorJob() + Dispatchers.IO) }
 }
 val viewModelModule = module {
     factoryOf(::MainViewModel)

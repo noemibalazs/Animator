@@ -119,7 +119,7 @@ private fun SelectorScreenContent(
             onSuccess = { uri -> galleryUri = uri }
         )
 
-        if (uiState.sharedImageUri?.isNotEmpty() == true) {
+        if (uiState.sharedImageUri?.isNotBlank() == true) {
             val image = imageProvider.provideAnimatorImage(uiState.sharedImageUri)
             imageProvider.DisplayAnimatorImage(
                 image = image,

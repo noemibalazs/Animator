@@ -24,7 +24,7 @@ class SelectorViewModel(
         }
     }
 
-    fun updateSharedImage(path: String?) = runCoroutine {
+    fun updateSharedImage(path: String?) {
         _uiState.update { it.copy(sharedImageUri = path) }
     }
 }

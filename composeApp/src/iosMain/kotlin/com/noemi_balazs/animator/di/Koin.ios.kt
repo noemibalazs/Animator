@@ -11,9 +11,11 @@ import com.noemi_balazs.animator.common.ImageProvider
 import com.noemi_balazs.animator.common.IosGallery
 import com.noemi_balazs.animator.common.IosImageProvider
 import com.noemi_balazs.animator.common.IosPermissionHandler
+import com.noemi_balazs.animator.common.IosPlatformFileStorage
 import com.noemi_balazs.animator.common.IosShareProvider
 import com.noemi_balazs.animator.common.IosToastManager
 import com.noemi_balazs.animator.common.PermissionHandler
+import com.noemi_balazs.animator.common.PlatformFileStorage
 import com.noemi_balazs.animator.common.ShareProvider
 import com.noemi_balazs.animator.common.ToastManager
 import com.noemi_balazs.animator.common.createDataStore
@@ -59,6 +61,7 @@ actual val platformModule: Module = module {
 
     single<DataStore<Preferences>> { createDataStore() }
     single<AnimatorDataBase> { getDatabase() }
+    single<PlatformFileStorage> { IosPlatformFileStorage() }
 }
 
 

@@ -1,21 +1,16 @@
 package com.noemi_balazs.animator.common
 
-import android.content.Context
-import android.graphics.ImageDecoder
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.net.toUri
 import coil3.compose.AsyncImage
 import com.noemi_balazs.animator.di.AnimatorImage
 
-class AndroidImageProvider(
-    private val context: Context
-) : ImageProvider {
+class AndroidImageProvider : ImageProvider {
 
     @Composable
     override fun DisplayAnimatorImage(
@@ -47,17 +42,9 @@ class AndroidImageProvider(
 
 
     override fun provideAnimatorImage(path: String): AnimatorImage {
-        val source = ImageDecoder.createSource(
-            context.contentResolver,
-            path.toUri()
-        )
-
-        return ImageDecoder.decodeBitmap(source)
+        return BitmapFactory.decodeFile(path)
     }
 }
 
 @Composable
-actual fun provideImage(): ImageProvider {
-    val context = LocalContext.current
-    return AndroidImageProvider(context)
-}
+actual fun provideImage(): ImageProvider = AndroidImageProvider()
