@@ -22,3 +22,6 @@ node_modules/
 *.onnx
 *.pt
 *.pth
+
+
+!iosApp/Resources/.gitkeep

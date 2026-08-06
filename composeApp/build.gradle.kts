@@ -60,7 +60,10 @@ kotlin {
                 defFile(project.file("src/nativeInterop/cinterop/onnx.def"))
 
                 packageName("onnxruntime")
-                includeDirs(onnxCinteropHeaders)
+                includeDirs(
+                    project.file("src/nativeInterop/cinterop"),
+                    onnxCinteropHeaders,
+                )
             }
         }
     }

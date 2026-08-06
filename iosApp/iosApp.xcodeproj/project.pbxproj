@@ -44,6 +44,28 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4224B91D301F34A30013AFD7 /* Exceptions for "Resources" folder in "iosApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				bryandlee_animegan2.onnx,
+				celeba_distill.onnx,
+				face_paint_v1.onnx,
+				face_paint_v2.onnx,
+				paprika.onnx,
+			);
+			target = 47A2D7692098A7D93BFEA33A /* iosApp */;
+		};
+		4224B91E301F34A30013AFD7 /* Exceptions for "Resources" folder in "AnimatorExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				bryandlee_animegan2.onnx,
+				celeba_distill.onnx,
+				face_paint_v1.onnx,
+				face_paint_v2.onnx,
+				paprika.onnx,
+			);
+			target = 42999805300B92CB006AACC1 /* AnimatorExtension */;
+		};
 		42999815300B92CC006AACC1 /* Exceptions for "AnimatorExtension" folder in "AnimatorExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -61,6 +83,15 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4224B91A301F2A770013AFD7 /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4224B91D301F34A30013AFD7 /* Exceptions for "Resources" folder in "iosApp" target */,
+				4224B91E301F34A30013AFD7 /* Exceptions for "Resources" folder in "AnimatorExtension" target */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42999807300B92CB006AACC1 /* AnimatorExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -116,6 +147,7 @@
 		1B4F6D9578FBEA8EE957CE49 = {
 			isa = PBXGroup;
 			children = (
+				4224B91A301F2A770013AFD7 /* Resources */,
 				BB82D7CB80AAE4F74FB1AC0A /* Configuration */,
 				8C92CF1A7A7AB018EB7747BC /* iosApp */,
 				42999807300B92CB006AACC1 /* AnimatorExtension */,
@@ -159,6 +191,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				4224B91A301F2A770013AFD7 /* Resources */,
 				42999807300B92CB006AACC1 /* AnimatorExtension */,
 			);
 			name = AnimatorExtension;

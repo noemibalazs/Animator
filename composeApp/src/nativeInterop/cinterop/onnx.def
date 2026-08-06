@@ -1,2 +1,3 @@
 language = C
-headers = onnxruntime_c_api.h
+headers = onnx_bridge.h
+headerFilter = onnx_bridge.h
