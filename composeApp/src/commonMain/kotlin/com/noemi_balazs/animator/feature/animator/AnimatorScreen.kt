@@ -106,7 +106,7 @@ fun AnimatorScreen(
                         showEditOptions = false
                     }
                 ) {
-                    DefaultImageActionRow(
+                    if (!isLoading) DefaultImageActionRow(
                         onEdit = {
                             showEditOptions = true
                         },
@@ -117,9 +117,13 @@ fun AnimatorScreen(
                     )
                 }
 
-                if (showEditOptions) AnimatorTypeSelector { animatorType ->
-                    viewModel.cartoonizeImage(type = animatorType.type)
-                }
+                if (showEditOptions) AnimatorTypeSelector(
+                    onHideEditOptions = {
+                        showEditOptions = false
+                    },
+                    onTypeSelected = { animatorType ->
+                        viewModel.cartoonizeImage(type = animatorType.type)
+                    })
             }
         }
 
@@ -194,6 +198,7 @@ private fun DefaultImageActionRow(
 
 @Composable
 private fun AnimatorTypeSelector(
+    onHideEditOptions: () -> Unit,
     onTypeSelected: (AnimatorType) -> Unit
 ) {
     val animatorTypes = animatorTypes()
@@ -214,6 +219,7 @@ private fun AnimatorTypeSelector(
             AnimatorTypeItem(
                 type = type,
                 onTypeSelected = {
+                    onHideEditOptions()
                     onTypeSelected(type)
                 }
             )

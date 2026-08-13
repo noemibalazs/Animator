@@ -34,11 +34,13 @@ class MainActivity : ComponentActivity() {
     private fun handleSharedIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_SEND) return
         val type = intent.type ?: return
-        if (!type.startsWith("image")) return
+        if (!type.startsWith("image/")) return
 
         val uri =
             IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Uri::class.java) ?: return
         saveImage(uri)
+
+        setIntent(Intent())
     }
 
     private fun saveImage(uri: Uri) {

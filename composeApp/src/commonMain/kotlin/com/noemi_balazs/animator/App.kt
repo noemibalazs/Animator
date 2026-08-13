@@ -31,7 +31,7 @@ fun App() {
 
         DisposableEffect(owner) {
             val observer = LifecycleEventObserver { _, event ->
-                if (event == Lifecycle.Event.ON_DESTROY) {
+                if (event == Lifecycle.Event.ON_STOP) {
                     viewModel.clearImage()
                 }
             }
