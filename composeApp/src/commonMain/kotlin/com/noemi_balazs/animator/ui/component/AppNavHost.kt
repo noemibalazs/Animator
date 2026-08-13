@@ -44,7 +44,7 @@ fun AppNavHost(
                 onNavigateToFavorite = {
                     navController.navigate(Favorite)
                 },
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = navController::popBackStack
             )
         }
 
@@ -52,7 +52,8 @@ fun AppNavHost(
             FavoriteScreen(
                 onNavigateCartoonDetailsScreen = {
                     navController.navigate(Details(it))
-                }
+                },
+                onNavigateBack = navController::popBackStack
             )
         }
 

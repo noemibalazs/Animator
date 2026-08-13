@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -32,12 +33,17 @@ import org.koin.compose.koinInject
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun FavoriteScreen(
+    onNavigateBack: () -> Unit,
     onNavigateCartoonDetailsScreen: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val viewModel = koinInject<FavoriteViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
+
+    BackHandler {
+        onNavigateBack()
+    }
 
     ScreenContainer(
         isLoading = isLoading,
