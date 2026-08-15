@@ -13,9 +13,6 @@ lifecycleProcess = "2.10.0"
 koin = "4.2.0"
 navigation = "2.9.2"
 coil = "3.4.0"
-foundation = "1.10.5"
-compose-bom = "2026.03.01"
-material = "1.4.0"
 ui-toolling = "1.10.6"
 coroutines = "1.11.0"
 camerax = "1.4.2"
@@ -25,9 +22,6 @@ date = "0.8.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
-androidx-compose-fundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
-androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui-toolling" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleProcess" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
