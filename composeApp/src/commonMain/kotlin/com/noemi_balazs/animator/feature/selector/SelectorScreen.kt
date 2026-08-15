@@ -108,6 +108,7 @@ private fun SelectorScreenContent(
                 },
                 onError = {
                     toastProvider.showMessage("Something went wrong, try it again!")
+                    onCameraClick = false
                 }
             )
         }
@@ -115,6 +116,7 @@ private fun SelectorScreenContent(
         if (onGalleryClick) galleryView.GalleryView(
             onError = {
                 toastProvider.showMessage("Something went wrong, try it again!")
+                onGalleryClick = false
             },
             onSuccess = { uri -> galleryUri = uri }
         )

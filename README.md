@@ -69,3 +69,14 @@ Regenerate ONNX cinterop bindings:
 
 ./gradlew :composeApp:cinteropOnnxruntimeIosArm64 :composeApp:cinteropOnnxruntimeIosSimulatorArm64
 ./gradlew :composeApp:commonizeCInterop
+
+
+## Screenshots
+
+![Caleba before.png](../../Desktop/Caleba%20before.png)
+
+![Caleba after.png](../../Desktop/Caleba%20after.png)
+
+![Bryandlee before.JPG](../../Desktop/Bryandlee%20before.JPG)
+
+![Bryandlee after.PNG](../../Desktop/Bryandlee%20after.PNG)
